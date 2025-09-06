@@ -1,5 +1,6 @@
 "use client";
 import React, { FormEvent } from "react";
+import { scrape } from "../lib/actions";
 
 const SearchBar = () => {
   const [urlTosearch, setUrlToSearch] = React.useState("");
@@ -10,8 +11,13 @@ const SearchBar = () => {
     if (!isItAvalidUrl(urlTosearch)) {
       alert("Please enter a valid URL");
       setLoading(false);
+
       return;
     }
+
+    scrape(urlTosearch);
+    setLoading(false);
+    setUrlToSearch("");
 
     //scape the url
   };
@@ -40,9 +46,9 @@ const SearchBar = () => {
         disabled={loading || !urlTosearch}
         //onClick={(e) => handleSearch(e)}
         type="submit"
-        className="bg-primary cursor-pointer w-48 text-white px-6 py-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="bg-primary disabled:bg-gray-700 cursor-pointer w-48 text-white px-6 py-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
       >
-        Scrape Now
+        {loading ? "scrapping...." : " Scrape Now"}
       </button>
     </form>
   );
