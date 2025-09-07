@@ -1,4 +1,5 @@
 export interface Product {
+  _id?: string;
   url: string;
   title: string;
   price: number;
@@ -13,6 +14,7 @@ export interface Product {
   rating?: number; // 0–5 range
   lowestPrice: number;
   highestPrice: number;
+  averagePrice: number;
   createdAt?: Date; // if using Mongoose timestamps
   updatedAt?: Date;
 }

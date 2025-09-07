@@ -1,10 +1,19 @@
 import Image from "next/image";
 import SearchBar from "./components/SearchBar";
 import ArticleCarousel from "./components/ArticleCarousel";
+import { findAllProduct } from "./lib/db/mongoose";
+import ProductCard from "./components/ProductCard";
 
-export default function Home() {
+export default async function Home() {
+  const products = await findAllProduct({
+    limite: 20,
+    orderBy: {
+      updatedAt: "desc",
+    },
+  });
+
   return (
-    <section className="max-w-[1440px] mx-auto bg-white mt-20">
+    <section className="flex flex-col max-w-[1440px] mx-auto bg-white my-20">
       <div className="flex flex-col xl:flex-row items-center justify-center min-h-screen py-2  gap-10">
         <div className=" xl:min-h-screen xl:gap-5 gap-2 h-full w-full flex flex-col">
           <div className="flex flex-row text-primary text-center px-4">
@@ -36,6 +45,16 @@ export default function Home() {
           <ArticleCarousel />
         </div>
       </div>
+      {products && (
+        <div className="flex flex-col py-2  gap-10 mt-10 max-sm:mx-auto ">
+          <h3 className="text-3xl font-semibold text-stone-900 ">Trending</h3>
+          <div className="flex max-sm:items-center flex-col xl:flex-row flex-wrap gap-8">
+            {products.map((product, index) => (
+              <ProductCard product={product} key={index} />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
