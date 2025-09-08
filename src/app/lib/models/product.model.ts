@@ -60,6 +60,13 @@ const productSchema = new mongoose.Schema(
     highestPrice: {
       type: Number,
     },
+    users: [
+      {
+        email: String,
+        date: Date,
+      },
+    ],
+    default: [],
   },
   { timestamps: true }
 );

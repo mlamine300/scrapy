@@ -7,7 +7,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { HiXMark } from "react-icons/hi2";
 import { twMerge } from "tailwind-merge";
 type ModalContextType = {
   isShowed: boolean;
@@ -27,7 +26,7 @@ const useModalContext = () => {
 };
 
 const Modal = ({ children }: { children: any }) => {
-  const [isShowed, setIsShowed] = useState(true);
+  const [isShowed, setIsShowed] = useState(false);
   const closeModal = () => {
     setIsShowed(false);
   };
@@ -52,7 +51,10 @@ function ExitButton({
   const { closeModal } = useContext(ModalContext);
   return (
     <button
-      className={twMerge("cursor-pointer p-2 rounded-full hover:bg-gray-200")}
+      className={twMerge(
+        "cursor-pointer p-2 rounded-full hover:bg-gray-200",
+        className
+      )}
       onClick={closeModal}
     >
       {children}

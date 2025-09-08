@@ -1,11 +1,21 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import { ExitButton } from "./Modal";
 import { HiOutlineEnvelope, HiXMark } from "react-icons/hi2";
+import { addUserEmailToProduct } from "../lib/actions";
 
-const TrackModal = () => {
+const TrackModal = ({ id }: { id: string }) => {
+  const [email, setEmail] = useState("");
+  const [isSubmiting, setIsSubmiting] = useState(false);
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmiting(true);
+    await addUserEmailToProduct(id, email);
+    setIsSubmiting(false);
+  };
   return (
-    <div className="flex flex-col gap-2 w-full h-full">
+    <form className="flex flex-col gap-2 w-full h-full" onSubmit={handleSubmit}>
       <div className="flex flex-row justify-between  my-2">
         <Image src={"/images/logo.png"} alt="log" width={40} height={40} />
         <ExitButton className="bg-transparent">
@@ -26,12 +36,17 @@ const TrackModal = () => {
           required
           className="w-full border-none outline-none"
           placeholder="contact@gmail.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <button className="w-full p-3 bg-stone-950 text-slate-50 text-base font-semibold hover:bg-stone-400 rounded-xl mt-5 cursor-pointer">
-        Track Product
+      <button
+        type="submit"
+        className="w-full p-3 bg-stone-950 text-slate-50 text-base font-semibold hover:bg-stone-400 rounded-xl mt-5 cursor-pointer"
+      >
+        {isSubmiting ? "Submiting..." : "Track Product"}
       </button>
-    </div>
+    </form>
   );
 };
 

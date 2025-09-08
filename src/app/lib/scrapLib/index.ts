@@ -68,6 +68,7 @@ export async function scrapeUrl(url: string): Promise<Product | undefined> {
       lowestPrice: Number(price),
       highestPrice: Number(price),
       averagePrice: Number(price),
+      users: [],
     };
     //console.log(data);
     return data;

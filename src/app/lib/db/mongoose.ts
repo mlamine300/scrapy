@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Product } from "@/types";
 import mongoose from "mongoose";
 import productModel from "../models/product.model";
@@ -18,7 +19,7 @@ export async function connectToDB() {
 }
 export async function updateProduct(data: Product) {
   try {
-    console.log(data);
+    //console.log({ data });
     connectToDB();
     const existingProduct = (await productModel.findOne({
       url: data.url,
@@ -32,6 +33,7 @@ export async function updateProduct(data: Product) {
         { price: data.price, date: new Date() },
       ],
     };
+
     newProduct = {
       ...newProduct,
       lowestPrice: getLowestPrice(newProduct),
@@ -52,15 +54,20 @@ export async function updateProduct(data: Product) {
       };
     }
 
-    const product = await productModel.findOneAndUpdate(
-      { url: newProduct.url },
-      newProduct,
-      {
-        upsert: true,
-        new: true,
-      }
-    );
-    return product._id;
+    try {
+      const product = await productModel.findOneAndUpdate(
+        { url: newProduct.url },
+        newProduct,
+        {
+          upsert: true,
+          new: true,
+        }
+      );
+      console.log(product);
+      return product._id;
+    } catch (error) {
+      console.log("--->", error);
+    }
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.log("mongoose Error: ", error.message);
@@ -68,6 +75,14 @@ export async function updateProduct(data: Product) {
       console.log("mongoose Error: ", error);
     }
     return null;
+  }
+}
+export async function updateProductById(id: string, obj: object) {
+  try {
+    const product = await productModel.findOneAndUpdate({ _id: id }, obj);
+    return product;
+  } catch (error) {
+    console.log("error updating product ", error);
   }
 }
 export async function findProductById(id: string) {

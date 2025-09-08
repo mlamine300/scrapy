@@ -6,10 +6,13 @@ import {
   findProductByAttr,
   findProductById,
   updateProduct,
+  updateProductById,
 } from "../db/mongoose";
 import { scrapeUrl } from "../scrapLib";
 import { revalidatePath } from "next/cache";
 import { SortOrder } from "mongoose";
+import { generateEmailBody, sendEmail } from "../nodemailer";
+import { redirect } from "next/navigation";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -29,6 +32,8 @@ export async function scrape(url: string) {
   const _id = await updateProduct(data);
   if (_id) console.log("product added succefully!! ", _id);
   revalidatePath(`/products/${_id}`);
+
+  redirect(`/products/${_id}`);
 
   //console.log("data from action", data);
 }
@@ -53,5 +58,23 @@ export async function getAllProduct({
   try {
   } catch (error) {
     console.log("Action:error getting all product", error);
+  }
+}
+export async function addUserEmailToProduct(id: string, emailAdress: string) {
+  try {
+    const product = (await findProductById(id)) as Product;
+    if (!product) return;
+    if (product.users.filter((u) => u.email === emailAdress).length > 0) return;
+
+    await updateProductById(id, {
+      users: product.users
+        ? [...product.users, { email: emailAdress, date: new Date() }]
+        : [{ email: emailAdress, date: new Date() }],
+    });
+    const email = await generateEmailBody(product, "WELCOME");
+    const info = await sendEmail(email, [emailAdress]);
+    console.log(info);
+  } catch (error) {
+    console.log("error adding user email to product ", error);
   }
 }

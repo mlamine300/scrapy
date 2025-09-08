@@ -3,14 +3,15 @@ import SearchBar from "./components/SearchBar";
 import ArticleCarousel from "./components/ArticleCarousel";
 import { findAllProduct } from "./lib/db/mongoose";
 import ProductCard from "./components/ProductCard";
+import { Product } from "@/types";
 
 export default async function Home() {
-  const products = await findAllProduct({
+  const products = (await findAllProduct({
     limite: 20,
     orderBy: {
       updatedAt: "desc",
     },
-  });
+  })) as unknown as Product[];
 
   return (
     <section className="flex flex-col max-w-[1440px] mx-auto bg-white my-20">

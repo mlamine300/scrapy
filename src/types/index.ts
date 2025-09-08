@@ -17,4 +17,22 @@ export interface Product {
   averagePrice: number;
   createdAt?: Date; // if using Mongoose timestamps
   updatedAt?: Date;
+  users: { email: string; date: Date }[] | [];
 }
+
+export type NotificationType =
+  | "WELCOME"
+  | "CHANGE_OF_STOCK"
+  | "LOWEST_PRICE"
+  | "THRESHOLD_MET";
+
+export type EmailContent = {
+  subject: string;
+  body: string;
+};
+
+export type EmailProductInfo = {
+  title: string;
+  url: string;
+  image: string;
+};

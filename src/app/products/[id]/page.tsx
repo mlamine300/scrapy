@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import Modal, { ExitButton, ContentBox } from "@/app/components/Modal";
+import Modal, { ContentBox } from "@/app/components/Modal";
 import ProductCard from "@/app/components/ProductCard";
 import TrackButton from "@/app/components/TrackButton";
 import TrackModal from "@/app/components/TrackModal";
@@ -16,8 +16,6 @@ import {
   HiOutlineStar,
   HiOutlineChatBubbleLeftEllipsis,
   HiOutlineShoppingBag,
-  HiXMark,
-  HiOutlineEnvelope,
 } from "react-icons/hi2";
 
 const page = async ({ params }: { params: any }) => {
@@ -197,7 +195,7 @@ const page = async ({ params }: { params: any }) => {
           </button>
         </div>
         <ContentBox className="w-[90%] sm:w-[400px] min-h-96 bg-slate-50 ">
-          <TrackModal />
+          <TrackModal id={id} />
         </ContentBox>
         {similaireProduct && (
           <div className="flex flex-col mt-10">

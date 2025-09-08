@@ -5,8 +5,9 @@ import { scrape } from "../lib/actions";
 const SearchBar = () => {
   const [urlTosearch, setUrlToSearch] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  const handleSearch = (e: FormEvent<HTMLFormElement>) => {
+  const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setLoading(true);
     if (!isItAvalidUrl(urlTosearch)) {
       alert("Please enter a valid URL");
@@ -15,8 +16,9 @@ const SearchBar = () => {
       return;
     }
 
-    scrape(urlTosearch);
+    await scrape(urlTosearch);
     setLoading(false);
+
     setUrlToSearch("");
 
     //scape the url
