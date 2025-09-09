@@ -167,27 +167,8 @@ const page = async ({ params }: { params: any }) => {
             Product Description
           </h2>
           <p className="text-lg font-medium text-stone-800 mt-10">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            voluptates adipisci voluptatibus, repudiandae praesentium
-            perspiciatis nesciunt odit aut quidem, inventore, labore fuga
-            reprehenderit maxime eveniet officia distinctio accusamus ullam.
-            Qui. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            voluptates adipisci voluptatibus, repudiandae praesentium
-            perspiciatis nesciunt odit aut quidem, inventore, labore fuga
-            reprehenderit maxime eveniet officia distinctio accusamus ullam.
-            Qui. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            voluptates adipisci voluptatibus, repudiandae praesentium
-            perspiciatis nesciunt odit aut quidem, inventore, labore fuga
-            reprehenderit maxime eveniet officia distinctio accusamus ullam.
-            Qui. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            voluptates adipisci voluptatibus, repudiandae praesentium
-            perspiciatis nesciunt odit aut quidem, inventore, labore fuga
-            reprehenderit maxime eveniet officia distinctio accusamus ullam.
-            Qui. Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-            voluptates adipisci voluptatibus, repudiandae praesentium
-            perspiciatis nesciunt odit aut quidem, inventore, labore fuga
-            reprehenderit maxime eveniet officia distinctio accusamus ullam.
-            Qui.
+            {product.description ||
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint.Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit, facilis a nulla, in perspiciatis alias atque nobis maiores neque mollitia? Voluptatibus dignissimos sit sed explicabo, voluptatem rerum aspernatur sint."}
           </p>
           <button className="text-slate-50 text-base bg-stone-950 font-semibold cursor-pointer mx-auto px-8 py-4 rounded-full hover:bg-stone-500 flex flex-row items-center gap-4">
             <HiOutlineShoppingBag className="w-5 h-5 text-xl font-bold" />

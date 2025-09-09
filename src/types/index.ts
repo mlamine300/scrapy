@@ -18,6 +18,7 @@ export interface Product {
   createdAt?: Date; // if using Mongoose timestamps
   updatedAt?: Date;
   users: { email: string; date: Date }[] | [];
+  description?: string;
 }
 
 export type NotificationType =

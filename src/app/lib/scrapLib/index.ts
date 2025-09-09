@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 import axios from "axios";
-import { extractCurrency, extractDigits } from "../utils";
+import { extractCurrency, extractDescription, extractDigits } from "../utils";
 import { Product } from "@/types";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -53,6 +53,7 @@ export async function scrapeUrl(url: string): Promise<Product | undefined> {
       $("#acrPopover .a-size-base.a-color-base").first()
     );
     const discountRate = Math.abs(Number(discount.replace("%", "")));
+    const description = extractDescription($);
     const data: Product = {
       url,
       title,
@@ -72,6 +73,7 @@ export async function scrapeUrl(url: string): Promise<Product | undefined> {
         : Number(price),
       averagePrice: Number(price),
       users: [],
+      description,
     };
     //console.log(data);
     return data;

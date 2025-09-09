@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { EmailContent, EmailProductInfo, NotificationType } from "@/types";
-
+import nodemailer from "nodemailer";
 //
 
 export async function generateEmailBody(
@@ -107,7 +107,7 @@ export async function generateEmailBody(
 let transporter: any = null;
 function initTransporter() {
   if (transporter) return;
-  const nodemailer = require("nodemailer");
+  //const nodemailer = require("nodemailer");
 
   transporter = nodemailer.createTransport({
     service: "gmail",
