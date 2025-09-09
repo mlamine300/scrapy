@@ -1,4 +1,13 @@
-import { Product } from "@/types";
+import { NotificationType, Product } from "@/types";
+
+const Notification = {
+  WELCOME: "WELCOME",
+  CHANGE_OF_STOCK: "CHANGE_OF_STOCK",
+  LOWEST_PRICE: "LOWEST_PRICE",
+  THRESHOLD_MET: "THRESHOLD_MET",
+};
+
+const THRESHOLD_PERCENTAGE = 40;
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export function extractDigits(...elements: any) {
@@ -41,3 +50,22 @@ export function getLowestPrice(product: Product) {
   const min = Math.min(...priceHistory);
   return min;
 }
+
+export const getEmailNotifType = (
+  scrapedProduct: Product,
+  currentProduct: Product
+) => {
+  const lowestPrice = getLowestPrice(currentProduct);
+
+  if (scrapedProduct.price < lowestPrice) {
+    return "LOWEST_PRICE" as NotificationType;
+  }
+  if (scrapedProduct.availability && !currentProduct.availability) {
+    return "CHANGE_OF_STOCK" as NotificationType;
+  }
+  if (scrapedProduct.discountRate >= THRESHOLD_PERCENTAGE) {
+    return "THRESHOLD_MET" as NotificationType;
+  }
+
+  return null;
+};

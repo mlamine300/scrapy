@@ -29,11 +29,12 @@ export async function scrape(url: string) {
     return;
   }
 
-  const _id = await updateProduct(data);
-  if (_id) console.log("product added succefully!! ", _id);
-  revalidatePath(`/products/${_id}`);
+  const product = await updateProduct(data);
 
-  redirect(`/products/${_id}`);
+  if (product._id) console.log("product added succefully!! ", product._id);
+  revalidatePath(`/products/${product._id}`);
+
+  redirect(`/products/${product._id}`);
 
   //console.log("data from action", data);
 }

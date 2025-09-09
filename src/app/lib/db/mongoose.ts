@@ -63,8 +63,8 @@ export async function updateProduct(data: Product) {
           new: true,
         }
       );
-      console.log(product);
-      return product._id;
+      //console.log(product);
+      return product;
     } catch (error) {
       console.log("--->", error);
     }

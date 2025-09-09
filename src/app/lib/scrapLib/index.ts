@@ -52,6 +52,7 @@ export async function scrapeUrl(url: string): Promise<Product | undefined> {
     const rating = extractDigits(
       $("#acrPopover .a-size-base.a-color-base").first()
     );
+    const discountRate = Math.abs(Number(discount.replace("%", "")));
     const data: Product = {
       url,
       title,
@@ -61,12 +62,14 @@ export async function scrapeUrl(url: string): Promise<Product | undefined> {
       currency,
       discount,
       priceHistory: [],
-      discountRate: Number(discount.replace("%", "")),
+      discountRate,
       category: "category",
       reviewsCount: Number(reviewsCount),
       rating: Number(rating),
       lowestPrice: Number(price),
-      highestPrice: Number(price),
+      highestPrice: discountRate
+        ? Number(price) * (1 + discountRate / 100)
+        : Number(price),
       averagePrice: Number(price),
       users: [],
     };

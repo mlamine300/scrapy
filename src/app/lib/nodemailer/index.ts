@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { EmailContent, EmailProductInfo, NotificationType } from "@/types";
-import { env } from "process";
+
 //
 
 export async function generateEmailBody(

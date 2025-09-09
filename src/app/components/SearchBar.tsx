@@ -48,7 +48,7 @@ const SearchBar = () => {
         disabled={loading || !urlTosearch}
         //onClick={(e) => handleSearch(e)}
         type="submit"
-        className="bg-primary disabled:bg-gray-700 cursor-pointer w-48 text-white px-6 py-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="bg-primary disabled:bg-gray-700 cursor-pointer w-48 text-white px-6 py-2 rounded-md hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed"
       >
         {loading ? "scrapping...." : " Scrape Now"}
       </button>
