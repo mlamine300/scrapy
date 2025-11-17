@@ -1,156 +1,113 @@
-# 🚀 AI-Powered Applicant Tracking System (ATS)
+<div align="center">
+  <br />
+    <a href="https://github.com/mlamine300/scrapy" target="_blank">
+      <img src="https://ik.imagekit.io/lamine300/scrapy%20banner.png" alt="Project Banner">
+    </a>
+  <br />
 
-An **AI-driven résumé analysis and job application assistant** built with modern web technologies.  
-This project evaluates résumés against job descriptions, provides detailed AI feedback, and generates ATS-style scores — all while running entirely serverless.
+  <div>
+    <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="Next.js" />
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="TailwindCSS" />
+    <img src="https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb" />
+    <img src="https://img.shields.io/badge/-Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="axios" />
+    <img src="https://img.shields.io/badge/-Cheerio-F8DC75?style=for-the-badge&logo=javascript&logoColor=black" alt="cheerio" />
+    <img src="https://img.shields.io/badge/-Nodemailer-339933?style=for-the-badge&logo=maildotru&logoColor=white" alt="nodemailer" />
+  </div>
+
+  <h3 align="center"># 🛒 Intelligent Price Tracking & Web Scraper System</h3>
+
+   <div align="center">
+A **full-stack, automated product price tracking system** that scrapes e-commerce sites, monitors price changes, stores historical data, and sends smart notifications when deals appear — powered by Next.js, MongoDB, and modern scraping tools.
+   </div>
+</div>
 
 ---
 
 ## ✨ Features
 
-- 🧠 **AI-Powered Résumé Analysis**  
-  Analyze any résumé and job description using free, serverless AI models (GPT, Claude, and others).
+- 🧭 **Intelligent Product Scraping**  
+  Automatically extract product title, images, current price, original price, discount rate, stock status, and more.
 
-- 📊 **ATS Scoring System**  
-  Generate a real-time Application Tracking System (ATS) score to evaluate résumé–job fit.
+- 📈 **Price History Tracking**  
+  Every scrape updates the product's historical price timeline to help analyze trends.
 
-- 📝 **Actionable AI Feedback**  
-  Receive structured feedback on tone, content, structure, and skill alignment.
+- 🔔 **Smart Email Alerts**  
+  Get notifications when:
 
-- ☁️ **Fully Serverless Architecture**  
-  No backend setup or servers required — authentication, storage, and AI all run directly from the frontend.
+  - Prices drop
+  - A new _lowest_ price is detected
+  - A product is back in stock
+  - Discounts reach a chosen threshold
 
-- 💾 **Secure File Uploads**  
-  Upload PDF résumés safely and convert them into visual previews.
+- 🔁 **Automated Cron-Based Scraping**  
+  A scheduled job re-scrapes all tracked products and sends alerts automatically.
 
-- 🧩 **Modern Frontend Stack**  
-  Built with React, TypeScript, Tailwind CSS, Zustand, and Vite for blazing-fast performance.
+- 📊 **Price Analytics Engine**  
+  Compute:
 
-- 🆓 **Zero Infrastructure Cost**  
-  Users handle their own AI and storage costs — keeping deployment completely free.
+  - Lowest recorded price
+  - Highest recorded price
+  - Average price over time
+
+- 🧩 **Modern Web Stack**  
+  Built with Next.js server components, Tailwind CSS, and MongoDB.
 
 ---
 
 ## 🧰 Tech Stack
 
-| Category | Technology |
-|-----------|-------------|
-| Frontend Framework | [React](https://react.dev/) + [React Router v7](https://reactrouter.com/) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com/) |
-| Language | [TypeScript](https://www.typescriptlang.org/) |
-| State Management | [Zustand](https://zustand-demo.pmnd.rs/) |
-| Cloud + AI | [Puter.js](https://puter.com/) (serverless cloud & AI services) |
-| Build Tool | [Vite](https://vitejs.dev/) |
-| File Upload | [React Dropzone](https://react-dropzone.js.org/) |
+| Category           | Technology                 |
+| ------------------ | -------------------------- |
+| Framework          | **Next.js**                |
+| Language           | **TypeScript**             |
+| Scraper            | **Axios + Cheerio**        |
+| Database           | **MongoDB (Mongoose)**     |
+| Email              | **Nodemailer**             |
+| Styling            | **Tailwind CSS**           |
+| Scheduling         | **Cron Jobs / API Routes** |
+| Hosting (Optional) | Vercel / Netlify / Render  |
 
 ---
 
-## 🏗️ Project Structure
+## 📁 Project Structure
 
-```
-src/
- ├── app/
- │   ├── components/      # Reusable UI components (Navbar, ResumeCard, etc.)
- │   ├── routes/          # App pages and routes (Home, Upload, Auth, etc.)
- │   ├── lib/             # Helper libraries (puter.ts, utils, etc.)
- │   ├── types/           # TypeScript declarations and interfaces
- │   ├── constants/       # Static data and configuration
- │   └── app.css          # Main Tailwind CSS file
- ├── public/              # Static assets and images
- └── package.json         # Dependencies and scripts
-```
+    src/
+     ├── app/
+     │   ├── api/
+     │   ├── components/
+     │   ├── product/
+     │   └── globals.css
+     ├── lib/
+     │   ├── scraper.ts
+     │   ├── utils.ts
+     │   ├── email.ts
+     │   └── db.ts
+     ├── models/
+     │   └── product.model.ts
+     ├── cron/
+     │   └── route.ts
+     └── public/
 
----
+## ⚙️ Installation
 
-## ⚙️ Installation & Setup
+    git clone https://github.com/mlamine300/scrapy
+    cd scrapy
+    npm install
+    npm run dev
 
-```bash
-# 1️⃣ Clone the repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
+## 🔐 Environment Variables
 
-# 2️⃣ Navigate to the project folder
-cd <your-repo-name>
-
-# 3️⃣ Install dependencies
-npm install
-
-# 4️⃣ Start the development server
-npm run dev
-```
-
-Your app will be live on `http://localhost:5173` 🎉
-
----
-
-## 🔐 Environment Setup
-
-This project uses **Puter.js** for AI, storage, and authentication.  
-To enable all features:
-
-1. Create a free account on [puter.com](https://puter.com).  
-2. Retrieve your **Puter API key** (if required).  
-3. Add it to your environment (or initialize it in `lib/puter.ts`).
-
-No backend setup is needed — everything runs client-side.
-
----
-
-## 🧠 How It Works
-
-1. **User Authentication**  
-   - Users sign in securely using Puter’s OAuth flow.
-
-2. **Resume Upload**  
-   - Upload a PDF résumé using drag-and-drop.
-   - The file is stored in the user’s personal cloud storage.
-
-3. **AI Analysis**  
-   - The app sends the résumé and job description to free AI endpoints.
-   - The model generates ATS scores and detailed improvement tips.
-
-4. **Result Display**  
-   - View feedback by category: Content, Tone, Structure, Skills.
-   - Preview the résumé and track job applications in one place.
-
----
+    MONGODB_URI=
+    EMAIL_USER=
+    EMAIL_PASS=
+    BRIGHT_DATA_USERNAME=
+    BRIGHT_DATA_PASSWORD=
 
 ## 🌐 Deployment
 
-This project can be deployed **for free** to any static hosting service, including:
-
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-- [GitHub Pages](https://pages.github.com/)
-- [Puter Cloud Hosting](https://puter.com/)
-
-Run:
-```bash
-npm run build
-```
-Then deploy the `dist/` folder.
-
----
-
-## 🧑‍💻 Developer Notes
-
-- Clean, modular React architecture.
-- Type-safe with TypeScript interfaces.
-- Uses Zustand for lightweight, global state management.
-- Fully responsive and mobile-friendly UI.
-
----
-
+Deploy easily on Vercel, Netlify, Render, Railway, etc.
 
 ## 📄 License
 
-This project is open-source under the **MIT License**.  
-Feel free to use, modify, and distribute it with attribution.
-
----
-
-## 💬 Feedback
-
-If you find this project useful or have suggestions for improvement, feel free to open an issue or submit a pull request.
-
----
-
-
+MIT License.
